@@ -1,1 +1,1 @@
-const ADMIN_EMAIL = 'your@email.com';
+const ADMIN_EMAIL = 'aarohipatel1016@gmail.com';
