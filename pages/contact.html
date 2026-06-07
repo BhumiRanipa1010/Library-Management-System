@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | LibraryHub</title>
+
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/contact.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- Auth check popup -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">
+    <h2>Login Required</h2>
+    <p>You need to login to access the Contact page.</p>
+    <div class="popup-btns">
+      <a href="login.html" class="popup-login-btn">Login</a>
+      <button onclick="goBack()" class="popup-cancel-btn">Go Back</button>
+    </div>
+  </div>
+</div>
+
+<section class="contact-section" id="contactSection" style="display:none;">
+<div class="contact-wrapper">
+
+<div class="contact-info">
+  <h1>Contact Us</h1>
+  <p>Have a question or feedback? We'd love to hear from you. Fill out the form and we'll get back to you shortly.</p>
+
+  <div class="info-item">
+    <span>📧</span>
+    <div>
+      <strong>Email</strong>
+      <p>libraryhub@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="info-item">
+    <span>📞</span>
+    <div>
+      <strong>Phone</strong>
+      <p>+91 7990878147</p>
+    </div>
+  </div>
+
+  <div class="info-item">
+    <span>📍</span>
+    <div>
+      <strong>Address</strong>
+      <p>Navsari, Gujarat, India</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="contact-form-box">
+  <form id="contactForm">
+
+    <div class="input-group">
+      <label>Full Name</label>
+      <input type="text" id="contactName" placeholder="Enter your name" required>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="contactEmail" placeholder="Enter your email" required>
+    </div>
+
+    <div class="input-group">
+      <label>Subject</label>
+      <input type="text" id="contactSubject" placeholder="Enter subject" required>
+    </div>
+
+    <div class="input-group">
+      <label>Message</label>
+      <textarea id="contactMessage" rows="5" placeholder="Write your message here..." required></textarea>
+    </div>
+
+    <button class="contact-btn" type="submit">Send Message</button>
+
+    <p id="contactMsg"></p>
+
+  </form>
+</div>
+
+</div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/contact.js"></script>
+
+</body>
+</html>

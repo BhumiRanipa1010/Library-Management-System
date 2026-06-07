@@ -1,0 +1,155 @@
+.login-section {
+  min-height: auto;
+  padding: 120px 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.login-card h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  opacity: .8;
+}
+
+.input-group {
+  margin-bottom: 22px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  background: var(--input-bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.password-box {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  background: var(--deep-teal);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.login-btn:hover {
+  background: var(--dark-slate-grey);
+}
+
+#message {
+  margin-top: 18px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.95rem;
+  opacity: .85;
+}
+
+.register-link a {
+  color: var(--deep-teal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--text);
+  opacity: .5;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--text);
+  opacity: .3;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 13px;
+  border: 1.5px solid var(--text);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: .3s;
+  opacity: .85;
+}
+
+.google-btn:hover {
+  background: var(--input-bg);
+  opacity: 1;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    padding: 28px;
+  }
+}

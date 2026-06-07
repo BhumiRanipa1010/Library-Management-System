@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Details | LibraryHub</title>
+
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/book-details.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<section class="details-section" id="detailsSection" style="display:none;">
+  <div class="details-card">
+
+    <div class="book-cover-large" id="bookCoverLarge"></div>
+
+    <div class="book-info">
+
+      <div class="book-badge" id="bookGenre"></div>
+      <h1 id="bookTitle"></h1>
+      <p class="book-author-name">by <span id="bookAuthor"></span></p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">ISBN</span>
+          <span class="info-value" id="bookISBN"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Genre</span>
+          <span class="info-value" id="bookGenre2"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Available Copies</span>
+          <span class="info-value" id="bookQty"></span>
+        </div>
+      </div>
+
+      <div class="book-description" id="bookDescriptionBox" style="display:none;">
+        <h3>About this book</h3>
+        <p id="bookDescription"></p>
+      </div>
+
+      <div id="borrowStatusBox" class="borrow-status" style="display:none;"></div>
+
+      <div class="details-actions">
+        <button class="borrow-btn" id="borrowBtn">Borrow Book</button>
+        <button class="return-btn" id="returnBtn" style="display:none;">Request Return</button>
+        <button class="back-btn" onclick="window.history.back()">← Go Back</button>
+      </div>
+
+      <p id="borrowMsg"></p>
+
+    </div>
+  </div>
+</section>
+
+<!-- Confirmation Modal -->
+<div id="confirmModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:var(--card-bg, #fff); border-radius:14px; padding:32px 28px; max-width:380px; width:90%; box-shadow:0 8px 32px rgba(0,0,0,0.2); text-align:center;">
+    <div id="confirmIcon" style="font-size:2.4rem; margin-bottom:10px;">📚</div>
+    <h3 id="confirmTitle" style="margin:0 0 8px; font-size:1.2rem; color:var(--text, #222);"></h3>
+    <p id="confirmMessage" style="margin:0 0 24px; color:var(--text-muted, #666); font-size:0.95rem; line-height:1.5;"></p>
+    <div style="display:flex; gap:12px; justify-content:center;">
+      <button id="confirmCancelBtn" style="padding:10px 24px; border-radius:8px; border:1.5px solid #ccc; background:transparent; cursor:pointer; font-size:0.95rem; color:var(--text,#333);">Cancel</button>
+      <button id="confirmOkBtn" style="padding:10px 24px; border-radius:8px; border:none; cursor:pointer; font-size:0.95rem; font-weight:600; color:#fff;"></button>
+    </div>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/book-details.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<div class="nav-backdrop" id="navBackdrop" onclick="closeMenu()"></div>
+
+<nav class="navbar">
+  <a href="../index.html" class="logo">📚 LibraryHub</a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html" onclick="closeMenu()">Home</a></li>
+    <li><a href="../pages/books.html" onclick="closeMenu()">Books</a></li>
+    <li><a href="../pages/contact.html" onclick="closeMenu()">Contact</a></li>
+    <li><span class="theme-icon" onclick="toggleTheme()" id="themeIcon">🌙</span></li>
+    <li><a href="../pages/login.html" class="auth-btn">Login / Signup</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>

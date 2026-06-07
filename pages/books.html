@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books – LibraryHub</title>
+
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/books.css">
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+
+  <!-- Login Required Popup -->
+  <div class="popup-overlay" id="loginPopup">
+    <div class="popup-box">
+      <div class="popup-icon">🔒</div>
+      <h2>Login Required</h2>
+      <p>Please login to view book details.</p>
+      <div class="popup-btns">
+        <a href="login.html" class="popup-login-btn">Login</a>
+        <button onclick="closeLoginPopup()" class="popup-cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page header -->
+  <div class="books-header">
+    <h1>📚 All Books</h1>
+    <p>Browse, search and filter every book in our library.</p>
+
+    <div class="controls">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by title, author or genre…"
+        oninput="applyFilters()"
+      >
+      <select id="genreFilter" onchange="applyFilters()">
+        <option value="">All Genres</option>
+      </select>
+      <select id="sortFilter" onchange="applyFilters()">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="az">Title A → Z</option>
+        <option value="za">Title Z → A</option>
+      </select>
+    </div>
+
+    <p class="results-info" id="resultsInfo"></p>
+  </div>
+
+  <!-- Book grid -->
+  <section class="books-section">
+    <div class="book-grid" id="bookGrid">
+      <p style="text-align:center;color:var(--text);opacity:.6;">Loading books…</p>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/footer.js"></script>
+  <script src="../js/books.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+:root {
+  --ash-grey: #cad2c5;
+  --muted-teal: #84a98c;
+  --deep-teal: #52796f;
+  --dark-slate-grey: #354f52;
+  --charcoal-blue: #2f3e46;
+
+  --bg: #cad2c5;
+  --text: #2f3e46;
+  --card: #ffffff;
+  --navbg: rgba(255, 255, 255, .9);
+  --input-bg: #ffffff;
+  --footer-bg: #edf1eb;
+  --shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.dark-mode {
+  --bg: #2f3e46;
+  --text: #f1f5f4;
+  --card: #354f52;
+  --navbg: #354f52;
+  --input-bg: #4a6669;
+  --footer-bg: #354f52;
+  --shadow: 0 5px 20px rgba(0, 0, 0, .3);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: .3s;
+  overflow-x: hidden;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LibraryHub</title>
+
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- Login Required Popup -->
+<div class="popup-overlay" id="loginPopup">
+  <div class="popup-box">
+    <div class="popup-icon">🔒</div>
+    <h2>Login Required</h2>
+    <p>Please login to view book details.</p>
+    <div class="popup-btns">
+      <a href="pages/login.html" class="popup-login-btn">Login</a>
+      <button onclick="closeLoginPopup()" class="popup-cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+<div class="hero-content">
+
+<h1>Discover Your Next Favorite Book</h1>
+<p>Search, Explore and Manage Books Easily</p>
+
+<div class="search-box">
+<input type="text" id="homeSearch" placeholder="Search Books" oninput="filterBooks()">
+<button onclick="handleSearch()">Search</button>
+</div>
+
+</div>
+</section>
+
+<section class="featured-books">
+<h2>Featured Books</h2>
+<div class="book-grid" id="bookGrid">
+  <p style="text-align:center; color: var(--text); opacity:.6;">Loading books...</p>
+</div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

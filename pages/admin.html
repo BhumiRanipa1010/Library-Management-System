@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | LibraryHub</title>
+
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- Access Denied Popup -->
+<div class="popup-overlay" id="accessPopup">
+  <div class="popup-box">
+    <h2>Access Denied</h2>
+    <p>You do not have permission to access the Admin Panel.</p>
+    <div class="popup-btns">
+      <a href="../index.html" class="popup-login-btn">Go to Home</a>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Book Popup -->
+<div class="popup-overlay" id="editPopup">
+  <div class="popup-box edit-popup-box">
+    <h2>Edit Book</h2>
+    <div class="input-group">
+      <label>Title</label>
+      <input type="text" id="editTitle" placeholder="Book title">
+    </div>
+    <div class="input-group">
+      <label>Author</label>
+      <input type="text" id="editAuthor" placeholder="Author name">
+    </div>
+    <div class="input-group">
+      <label>Genre</label>
+      <input type="text" id="editGenre" placeholder="Genre">
+    </div>
+    <div class="input-group">
+      <label>Quantity</label>
+      <input type="number" id="editQuantity" placeholder="Quantity">
+    </div>
+    <div class="input-group">
+      <label>ISBN</label>
+      <input type="text" id="editISBN" placeholder="ISBN">
+    </div>
+    <div class="input-group">
+      <label>Description</label>
+      <textarea id="editDescription" placeholder="Write a short description..." rows="4"></textarea>
+    </div>
+    <p id="editMsg"></p>
+    <div class="popup-btns">
+      <button class="popup-login-btn" onclick="saveEdit()">Save Changes</button>
+      <button class="popup-cancel-btn" onclick="closeEditPopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<section class="admin-section" id="adminSection" style="display:none;">
+
+  <div class="admin-header">
+    <h1>Admin Panel</h1>
+    <p>Manage your library books</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span id="totalBooks">0</span>
+      <p>Total Books</p>
+    </div>
+    <div class="stat-card">
+      <span id="totalGenres">0</span>
+      <p>Genres</p>
+    </div>
+    <div class="stat-card">
+      <span id="totalQuantity">0</span>
+      <p>Total Quantity</p>
+    </div>
+  </div>
+
+  <!-- Add Book Form -->
+  <div class="admin-card">
+    <h2>Add New Book</h2>
+    <form id="addBookForm">
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Title</label>
+          <input type="text" id="title" placeholder="Book title" required>
+        </div>
+        <div class="input-group">
+          <label>Author</label>
+          <input type="text" id="author" placeholder="Author name" required>
+        </div>
+        <div class="input-group">
+          <label>Genre</label>
+          <input type="text" id="genre" placeholder="Genre" required>
+        </div>
+        <div class="input-group">
+          <label>Quantity</label>
+          <input type="number" id="quantity" placeholder="Quantity" required>
+        </div>
+        <div class="input-group">
+          <label>ISBN</label>
+          <input type="text" id="isbn" placeholder="ISBN" required>
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:20px;">
+        <label>Description</label>
+        <textarea id="description" placeholder="Write a short description of the book..." rows="4" required></textarea>
+      </div>
+
+      <button class="admin-btn" type="submit">Add Book</button>
+      <p id="addMsg"></p>
+    </form>
+  </div>
+
+  <!-- Books Table -->
+  <div class="admin-card">
+    <div class="table-header">
+      <h2>All Books</h2>
+      <input type="text" id="searchInput" placeholder="Search by title or author..." oninput="searchBooks()">
+    </div>
+    <div class="table-wrapper">
+      <table id="booksTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Quantity</th>
+            <th>ISBN</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="booksTableBody">
+          <tr><td colspan="7" class="no-data">No books added yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Borrow Requests -->
+  <div class="admin-card">
+    <div class="table-header">
+      <h2>Borrow Requests</h2>
+      <select id="requestFilter" onchange="filterRequests()">
+        <option value="all">All Requests</option>
+        <option value="pending">Pending</option>
+        <option value="accepted">Accepted</option>
+        <option value="rejected">Rejected</option>
+        <option value="return_pending">Return Pending</option>
+        <option value="returned">Returned</option>
+      </select>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Requested At</th>
+            <th>Borrowed At</th>
+            <th>Due Date</th>
+            <th>Returned At</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="requestsTableBody">
+          <tr><td colspan="11" class="no-data">No requests yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<div id="footer-container"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/admin-config.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/admin.js"></script>
+
+</body>
+</html>

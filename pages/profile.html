@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | LibraryHub</title>
+
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<section class="profile-section" id="profileSection" style="display:none;">
+
+  <!-- Profile Header -->
+  <div class="profile-header-card">
+    <div class="profile-avatar" id="profileAvatar"></div>
+    <div class="profile-meta">
+      <h1 id="profileName"></h1>
+      <p id="profileEmail"></p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span id="statBorrowed">0</span>
+      <p>Currently Borrowed</p>
+    </div>
+    <div class="stat-card">
+      <span id="statReturned">0</span>
+      <p>Total Returned</p>
+    </div>
+    <div class="stat-card">
+      <span id="statOverdue">0</span>
+      <p>Overdue</p>
+    </div>
+    <div class="stat-card">
+      <span id="statPending">0</span>
+      <p>Pending Requests</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('borrowed')">Currently Borrowed</button>
+    <button class="tab-btn" onclick="switchTab('returned')">Returned Books</button>
+    <button class="tab-btn" onclick="switchTab('pending')">Pending Requests</button>
+    <button class="tab-btn" onclick="switchTab('rejected')">Rejected</button>
+  </div>
+
+  <!-- Borrowed Tab -->
+  <div class="tab-content" id="tab-borrowed">
+    <div class="profile-card">
+      <div id="borrowedList"><p class="no-data-text">No borrowed books.</p></div>
+    </div>
+  </div>
+
+  <!-- Returned Tab -->
+  <div class="tab-content" id="tab-returned" style="display:none;">
+    <div class="profile-card">
+      <div id="returnedList"><p class="no-data-text">No returned books.</p></div>
+    </div>
+  </div>
+
+  <!-- Pending Tab -->
+  <div class="tab-content" id="tab-pending" style="display:none;">
+    <div class="profile-card">
+      <div id="pendingList"><p class="no-data-text">No pending requests.</p></div>
+    </div>
+  </div>
+
+  <!-- Rejected Tab -->
+  <div class="tab-content" id="tab-rejected" style="display:none;">
+    <div class="profile-card">
+      <div id="rejectedList"><p class="no-data-text">No rejected requests.</p></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ── Return Confirmation Popup ── -->
+<div class="return-popup-overlay" id="returnConfirmPopup">
+  <div class="return-popup-box">
+    <div class="popup-icon">📚</div>
+    <h3>Return this book?</h3>
+    <p>Are you sure you want to return this book? A return request will be sent to the admin for approval.</p>
+    <div class="popup-actions">
+      <button class="popup-cancel-btn" onclick="closeReturnPopup()">Cancel</button>
+      <button class="popup-confirm-btn" onclick="confirmReturnRequest()">Yes, Return</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast Notification ── -->
+<div class="profile-toast" id="profileToast"></div>
+
+<div id="footer-container"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/profile.js"></script>
+
+</body>
+</html>
