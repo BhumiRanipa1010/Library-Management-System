@@ -33,40 +33,43 @@ window.addEventListener('load', function() {
     else document.getElementById('message').textContent = '';
   });
 
-  // Handle Google redirect result when page loads
+  // Check redirect result FIRST thing
   firebase.auth().getRedirectResult()
     .then(function(result) {
       if (result && result.user) {
         showSuccess('✅ Account created! Redirecting...');
-        setTimeout(function() { window.location.href = '../index.html'; }, 500);
+        window.location.replace('../index.html');
       }
     })
     .catch(function(error) {
-      if (error.code && error.code !== 'auth/no-auth-event') {
+      if (error.code !== 'auth/no-auth-event') {
         showError('❌ ' + error.message);
       }
     });
 
-  // Email signup
+  // Also check if user already signed in
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      window.location.replace('../index.html');
+    }
+  });
+
   document.getElementById('signupForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const name            = document.getElementById('name').value.trim();
     const email           = document.getElementById('email').value.trim();
     const password        = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-
     const err = validatePassword(password);
     if (err) { showError(err); return; }
     if (password !== confirmPassword) { showError('❌ Passwords do not match.'); return; }
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(function(userCredential) {
         return userCredential.user.updateProfile({ displayName: name });
       })
       .then(function() {
         showSuccess('✅ Account created! Redirecting...');
-        setTimeout(function() { window.location.href = 'login.html'; }, 500);
+        setTimeout(function() { window.location.replace('login.html'); }, 500);
       })
       .catch(function(error) {
         if (error.code === 'auth/email-already-in-use') showError('❌ This email is already registered.');
@@ -74,14 +77,10 @@ window.addEventListener('load', function() {
       });
   });
 
-  // Google signup - redirect method
   document.getElementById('googleBtn').addEventListener('click', function() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-    firebase.auth().signInWithRedirect(provider)
-      .catch(function(error) {
-        showError('❌ ' + error.message);
-      });
+    firebase.auth().signInWithRedirect(provider);
   });
 
 });
