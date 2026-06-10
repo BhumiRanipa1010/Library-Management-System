@@ -1,1 +1,0 @@
-const ADMIN_EMAIL = 'aarohipatel1016@gmail.com';

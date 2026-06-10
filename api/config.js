@@ -11,6 +11,7 @@ const firebaseConfig = {
   appId: "${process.env.FIREBASE_APP_ID}"
 };
 firebase.initializeApp(firebaseConfig);
+const ADMIN_EMAIL = "${process.env.ADMIN_EMAIL}";
 const ADMIN_UID = "${process.env.ADMIN_UID}";
   `);
 }

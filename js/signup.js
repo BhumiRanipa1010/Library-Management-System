@@ -33,6 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
     else document.getElementById('message').textContent = '';
   });
 
+  // Handle Google redirect result when page loads
+  firebase.auth().getRedirectResult()
+    .then(function(result) {
+      if (result && result.user) {
+        showSuccess('✅ Account created! Redirecting...');
+        setTimeout(function() { window.location.href = '../index.html'; }, 500);
+      }
+    })
+    .catch(function(error) {
+      if (error.code && error.code !== 'auth/no-auth-event') {
+        showError('❌ ' + error.message);
+      }
+    });
+
+  // Email signup
   document.getElementById('signupForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -59,28 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 
-  let googlePending = false;
-
+  // Google signup - redirect method
   document.getElementById('googleBtn').addEventListener('click', function() {
-    if (googlePending) return;
-    googlePending = true;
-
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-
-    firebase.auth().signInWithPopup(provider)
-      .then(function() {
-        showSuccess('✅ Account created! Redirecting...');
-        setTimeout(function() { window.location.href = '../index.html'; }, 500);
-      })
+    firebase.auth().signInWithRedirect(provider)
       .catch(function(error) {
-        if (error.code !== 'auth/cancelled-popup-request' &&
-            error.code !== 'auth/popup-closed-by-user') {
-          showError('❌ ' + error.message);
-        }
-      })
-      .finally(function() {
-        googlePending = false;
+        showError('❌ ' + error.message);
       });
   });
 
