@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
 
   function togglePassword(id) {
     const input = document.getElementById(id);
