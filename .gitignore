@@ -1,6 +1,4 @@
-node_modules/
-.env
-firebase-debug.log
-.DS_Store
 js/firebase-config.js
 js/admin-config.js
+.env
+.env.local
